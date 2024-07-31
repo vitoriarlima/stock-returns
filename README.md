@@ -1,5 +1,7 @@
 # Stock Return Prediction
 
+[Read the full blog post here](https://vitoriarlima.github.io/portfolio/finance-project-2.html)
+
 ## Challenge Goals
 
 Link: [Link to the Data Challenge by QRT HERE](https://challengedata.ens.fr/participants/challenges/23/)
@@ -51,36 +53,15 @@ Output datasets are only composed of 2 columns:
 To enhance the dataset and improve prediction accuracy, the following feature engineering techniques were applied:
 
 1. **Volatility Measures**:
-   - **Rolling Standard Deviation**:
-     $$
-     \text{Rolling Std} = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (R_i - \overline{R})^2}
-     $$
-   - **Volatility of Volatility (Vol of Vol)** (std of std):
-     $$
-     \text{Vol of Vol} = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (\sigma_i - \overline{\sigma})^2}
-     $$
+   - Rolling Standard Deviation
+   - Volatility of Volatility (Vol of Vol)
 
 2. **Technical Indicators**:
-   - **Money Flow Index (MFI)**:
-     $$
-     \text{MFI} = 100 - \left( \frac{100}{1 + \frac{\sum(\text{Positive Money Flow})}{\sum(\text{Negative Money Flow})}} \right)
-     $$
-   - **Relative Strength Index (RSI)**:
-     $$
-     \text{RSI} = 100 - \left( \frac{100}{1 + \frac{\text{Average Gain}}{\text{Average Loss}}} \right)
-     $$
-   - **Accumulation/Distribution Line (ADL)**:
-     $$
-     \text{ADL} = \sum \left( \frac{(C - L) - (H - C)}{H - L} \times V \right)
-     $$
-   - **Average True Range (ATR)**:
-     $$
-     \text{ATR} = \frac{1}{n} \sum_{i=1}^{n} \text{TR}_i
-     $$
-   - **Moving Average Convergence Divergence (MACD)**:
-     $$
-     \text{MACD} = \text{EMA}_{12} - \text{EMA}_{26}
-     $$
+   - Money Flow Index (MFI)
+   - Relative Strength Index (RSI)
+   - Accumulation/Distribution Line (ADL)
+   - Average True Range (ATR)
+   - Moving Average Convergence Divergence (MACD)
 
 ## Structure of the Code
 
@@ -109,6 +90,5 @@ To enhance the dataset and improve prediction accuracy, the following feature en
 Future ideas include:
 - Think about how to leverage **kurtosis** and skewness of the distributions for statistically-driven feature engineering and indicators
 - Read more extensively [Giuseppe’s notes](https://www.dropbox.com/scl/fo/dcjs09n8o1n9who0vo4nl/AAPjHxg0j0CRJ5me1OKF7JE/NYU%20notes%20Giuseppe?rlkey=liz1nlorbnzzolzhyv88sp69u&e=1&dl=0) and get inspiration about more statistically and mathematically proven and robust methods to derive alpha
-
 
 
