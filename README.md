@@ -56,9 +56,7 @@ To enhance the dataset and improve prediction accuracy, the following feature en
 
 2. **Technical Indicators**:
    - **Money Flow Index (MFI)**:
-     $$
-     \text{MFI} = 100 - \left( \frac{100}{1 + \frac{\sum(\text{Positive Money Flow})}{\sum(\text{Negative Money Flow})}} \right)
-     $$
+     $$ \text{MFI} = 100 - \left( \frac{100}{1 + \frac{\sum(\text{Positive Money Flow})}{\sum(\text{Negative Money Flow})}} \right) $$
    - **Relative Strength Index (RSI)**:
      $$
      \text{RSI} = 100 - \left( \frac{100}{1 + \frac{\text{Average Gain}}{\text{Average Loss}}} \right)
