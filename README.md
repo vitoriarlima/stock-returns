@@ -4,17 +4,23 @@
 
 Link: [Link to the Data Challenge by QRT HERE](https://challengedata.ens.fr/participants/challenges/23/)
 
-The proposed challenge aims at predicting the return of a stock in the US market using historical data over a recent period of 20 days. The one-day return of a stock \( j \) on day \( t \) with price \( P_j^t \) (adjusted from dividends and stock splits) is given by:
+The proposed challenge aims at predicting the return of a stock in the US market using historical data over a recent period of 20 days. The one-day return of a stock $j$ on day $t$ with price $P_j^t$ (adjusted from dividends and stock splits) is given by:
 
-\[ R_{j}^{t} = \frac{P_{j}^{t}}{P_{j}^{t-1}} - 1 \]
+$$
+R_{j}^{t} = \frac{P_{j}^{t}}{P_{j}^{t-1}} - 1
+$$
 
-In this challenge, we consider the residual stock return, which corresponds to the return of a stock without the market impact. Historical data are composed of residual stock returns and relative volumes, sampled each day during the 20 last business days (approximately one month). The relative volume \( V_{j}^{t} \) at time \( t \) of a stock \( j \) among the \( n \) stocks is defined by:
+In this challenge, we consider the residual stock return, which corresponds to the return of a stock without the market impact. Historical data are composed of residual stock returns and relative volumes, sampled each day during the 20 last business days (approximately one month). The relative volume $V_{j}^{t}$ at time $t$ of a stock $j$ among the $n$ stocks is defined by:
 
-\[ \overline{V}_{j}^{t} = \frac{V^{t}}{\text{median}(\{V_{j}^{t-1}, \ldots, V_{j}^{t-20}\})} \]
+$$
+\overline{V}_{j}^{t} = \frac{V^{t}}{\text{median}(\{V_{j}^{t-1}, \ldots, V_{j}^{t-20}\})}
+$$
 
-\[ V_{j}^{t} = \overline{V}_{j}^{t} - \frac{1}{n} \sum_{i=1}^{n} \overline{V}_{i}^{t} \]
+$$
+V_{j}^{t} = \overline{V}_{j}^{t} - \frac{1}{n} \sum_{i=1}^{n} \overline{V}_{i}^{t}
+$$
 
-where \( V^{t} \) is the volume at time \( t \) of a stock \( j \). We also give additional information about each stock such as its industry and sector.
+where $V^{t}$ is the volume at time $t$ of a stock $j$. We also give additional information about each stock such as its industry and sector.
 
 The metric considered is the accuracy of the predicted residual stock return sign.
 
@@ -34,11 +40,11 @@ The dataset comprises 46 descriptive features (all float/int values):
 Output datasets are only composed of 2 columns:
 
 - **ID**: the unique row identifier (corresponding to the input identifiers) and the binary target:
-- **RET**: the sign of the residual stock return at time \( t \)
+- **RET**: the sign of the residual stock return at time $t$
 
 ## Target Variable
 
-- **RET**: The sign of the residual stock return at time \( t \) (binary).
+- **RET**: The sign of the residual stock return at time $t$ (binary).
 
 ## Feature Engineering
 
@@ -46,21 +52,35 @@ To enhance the dataset and improve prediction accuracy, the following feature en
 
 1. **Volatility Measures**:
    - **Rolling Standard Deviation**:
-     \[ \text{Rolling Std} = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (R_i - \overline{R})^2} \]
+     $$
+     \text{Rolling Std} = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (R_i - \overline{R})^2}
+     $$
    - **Volatility of Volatility (Vol of Vol)** (std of std):
-     \[ \text{Vol of Vol} = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (\sigma_i - \overline{\sigma})^2} \]
+     $$
+     \text{Vol of Vol} = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (\sigma_i - \overline{\sigma})^2}
+     $$
 
 2. **Technical Indicators**:
    - **Money Flow Index (MFI)**:
-     \[ \text{MFI} = 100 - \left( \frac{100}{1 + \frac{\sum(\text{Positive Money Flow})}{\sum(\text{Negative Money Flow})}} \right) \]
+     $$
+     \text{MFI} = 100 - \left( \frac{100}{1 + \frac{\sum(\text{Positive Money Flow})}{\sum(\text{Negative Money Flow})}} \right)
+     $$
    - **Relative Strength Index (RSI)**:
-     \[ \text{RSI} = 100 - \left( \frac{100}{1 + \frac{\text{Average Gain}}{\text{Average Loss}}} \right) \]
+     $$
+     \text{RSI} = 100 - \left( \frac{100}{1 + \frac{\text{Average Gain}}{\text{Average Loss}}} \right)
+     $$
    - **Accumulation/Distribution Line (ADL)**:
-     \[ \text{ADL} = \sum \left( \frac{(C - L) - (H - C)}{H - L} \times V \right) \]
+     $$
+     \text{ADL} = \sum \left( \frac{(C - L) - (H - C)}{H - L} \times V \right)
+     $$
    - **Average True Range (ATR)**:
-     \[ \text{ATR} = \frac{1}{n} \sum_{i=1}^{n} \text{TR}_i \]
+     $$
+     \text{ATR} = \frac{1}{n} \sum_{i=1}^{n} \text{TR}_i
+     $$
    - **Moving Average Convergence Divergence (MACD)**:
-     \[ \text{MACD} = \text{EMA}_{12} - \text{EMA}_{26} \]
+     $$
+     \text{MACD} = \text{EMA}_{12} - \text{EMA}_{26}
+     $$
 
 ## Structure of the Code
 
