@@ -19,7 +19,7 @@ V_{j}^{t} = \frac{V^{t}}{\text{median}(\{V_{j}^{t-1}, \ldots, V_{j}^{t-20}\})}
 $$
 
 $$
-V_{j}^{t} = \V_{j}^{t} - \frac{1}{n} \sum_{i=1}^{n} V_{i}^{t}
+V_{j}^{t} = V_{j}^{t} - \frac{1}{n} \sum_{i=1}^{n} V_{i}^{t}
 $$
 
 where \( V^{t} \) is the volume at time \( t \) of a stock \( j \). We also give additional information about each stock such as its industry and sector.
