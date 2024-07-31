@@ -15,11 +15,11 @@ $$
 In this challenge, we consider the residual stock return, which corresponds to the return of a stock without the market impact. Historical data are composed of residual stock returns and relative volumes, sampled each day during the 20 last business days (approximately one month). The relative volume \( V_{j}^{t} \) at time \( t \) of a stock \( j \) among the \( n \) stocks is defined by:
 
 $$
-\overline{V}_{j}^{t} = \frac{V^{t}}{\text{median}(\{V_{j}^{t-1}, \ldots, V_{j}^{t-20}\})}
+\V_{j}^{t} = \frac{V^{t}}{\text{median}(\{V_{j}^{t-1}, \ldots, V_{j}^{t-20}\})}
 $$
 
 $$
-V_{j}^{t} = \overline{V}_{j}^{t} - \frac{1}{n} \sum_{i=1}^{n} \overline{V}_{i}^{t}
+V_{j}^{t} = \V_{j}^{t} - \frac{1}{n} \sum_{i=1}^{n} \V_{i}^{t}
 $$
 
 where \( V^{t} \) is the volume at time \( t \) of a stock \( j \). We also give additional information about each stock such as its industry and sector.
